@@ -36,5 +36,6 @@ fastboot flash gpt     "${_EDISON_IMG_DIR}"/gpt.bin \
 	flash u-boot   "${_EDISON_UBOOT_DIR}"/u-boot-edison.bin \
 	flash boot_a   "${_EDISON_IMG_DIR}"/boot.img \
 	flash system_a "${_EDISON_IMG_DIR}"/system.img \
-	flash data     "${_EDISON_IMG_DIR}"/userdata.img
-fastboot oem set_active 0
+	flash userdata "${_EDISON_IMG_DIR}"/userdata.img \
+	oem set_active 0 "$@"
+
