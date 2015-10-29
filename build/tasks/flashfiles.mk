@@ -12,7 +12,7 @@ EDISON_ZIP    :=  $(TARGET_OUT_INTERMEDIATES)/$(edisonname).zip
 EDISON_VENDOR := vendor/bsp/intel/edison
 EDISON_DEVICE := device/intel/edison
 EDISON_IFWI   := $(EDISON_VENDOR)/ifwi_firmware
-EDISON_UBOOT  := $(EDISON_DEVICE)/uboot_firmware
+EDISON_UBOOT  := $(EDISON_VENDOR)/uboot_firmware
 EDISON_TOOLS  := $(EDISON_DEVICE)/flash_tools
 
 EDISON_FLASHFILES := $(INSTALLED_BOOTIMAGE_TARGET)
