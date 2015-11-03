@@ -30,7 +30,7 @@ _EDISON_IMG_DIR=$(dir_with_file boot.img \
 # Location of binary blobs supplied by the vendor.
 _EDISON_UBOOT_DIR=$(dir_with_file u-boot-edison.bin \
     "${LOCAL_DIR}" \
-    "${ANDROID_BUILD_TOP}/device/intel/edison/uboot_firmware")
+    "${ANDROID_BUILD_TOP}/vendor/bsp/intel/edison/uboot_firmware")
 
 fastboot flash gpt     "${_EDISON_IMG_DIR}"/gpt.bin \
 	flash u-boot   "${_EDISON_UBOOT_DIR}"/u-boot-edison.bin \
