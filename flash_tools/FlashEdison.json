@@ -11,7 +11,7 @@
                 "description": "notify"
             },
             {
-                "restrict": ["full"],
+                "restrict": ["full", "non_os"],
                 "ifwi_dnx": "${fw_dnx_file}",
                 "os_dnx": "${os_dnx_file}",
                 "tool": "xfstkDownloader",
@@ -37,7 +37,7 @@
                 "args": "flash gpt ${gpt_file}"
             },
             {
-                "restrict": ["full", "os"],
+                "restrict": ["full", "os", "non_os"],
                 "retry": 2,
                 "mandatory": true,
                 "description": "Flashing u-boot",
@@ -46,8 +46,53 @@
                 "args": "flash u-boot ${u-boot_file}"
             },
             {
+                "restrict": ["full", "os", "update"],
+                "retry": 2,
+                "mandatory": true,
+                "description": "Flashing boot",
+                "timeout": 60000,
+                "tool": "fastboot",
+                "args": "flash boot_a ${boot_file}"
+            },
+            {
+                "restrict": ["full", "os"],
+                "retry": 2,
+                "mandatory": true,
+                "description": "Flashing data",
+                "timeout": 60000,
+                "tool": "fastboot",
+                "args": "flash userdata ${userdata_file}"
+            },
+            {
+                "restrict": ["full", "os", "update"],
+                "retry": 2,
+                "mandatory": true,
+                "description": "Flashing system",
+                "timeout": 1200000,
+                "tool": "fastboot",
+                "args": "flash system_a ${system_file}"
+            },
+            {
+                "restrict": ["full", "os", "update"],
+                "retry": 2,
+                "mandatory": true,
+                "description": "Setting slot 0 active",
+                "timeout": 1200000,
+                "tool": "fastboot",
+                "args": "oem set_active 0"
+            },
+            {
+                "restrict": ["full", "os", "update"],
+                "retry": 2,
+                "mandatory": true,
+                "description": "Rebooting",
+                "timeout": 1200000,
+                "tool": "fastboot",
+                "args": "reboot"
+            },
+            {
                 "duration": 60000,
-                "restrict": null,
+                "restrict": "non_os",
                 "tool": "notifier",
                 "source": "Run 'provision', then 'fastboot reboot' to boot the device.",
                 "description": "notify"
@@ -55,6 +100,18 @@
         ],
         "groups": {},
         "parameters": {
+            "system_file": {
+                "type": "file",
+                "description": "System",
+                "value": "system.img",
+                "name": "System"
+            },
+            "userdata_file": {
+                "type": "file",
+                "description": "data partition",
+                "value": "userdata.img",
+                "name": "Userdata"
+            },
             "u-boot_file": {
                 "type": "file",
                 "description": "U-Boot",
@@ -91,6 +148,12 @@
                 "value": "edison_dnx_osr.bin",
                 "name": "OS DnX"
             },
+            "boot_file": {
+                "type": "file",
+                "description": "Boot partition",
+                "value": "boot.img",
+                "name": "Boot partition"
+            },
             "gpt_file": {
                 "type": "file",
                 "description": "Partition Table",
@@ -109,25 +172,35 @@
                 "startState": "dnx_fw",
                 "description": "full reflash"
             },
+            "non_os": {
+                "name": "Non_OS",
+                "parameters": {},
+                "default": true,
+                "documentation": "",
+                "groupsState": {},
+                "brief": "firmware and u-boot flashing",
+                "startState": "dnx_fw",
+                "description": "ifwi and u-boot reflash"
+            },
             "os": {
                 "name": "OS",
                 "parameters": {},
                 "default": false,
                 "documentation": "",
                 "groupsState": {},
-                "brief": "Flash boot image and system image",
-                "startState": "dnx_fw",
+                "brief": "Flash u-boot, boot, userdata and system images",
+                "startState": "pos",
                 "description": "os reflash"
             },
-            "system": {
-                "name": "System",
+            "update": {
+                "name": "Update",
                 "parameters": {},
                 "default": false,
                 "documentation": "",
                 "groupsState": {},
-                "brief": "Flash system image",
-                "startState": "dnx_fw",
-                "description": "system reflash"
+                "brief": "Flash boot and system images",
+                "startState": "pos",
+                "description": "update system"
             }
         }
     }
