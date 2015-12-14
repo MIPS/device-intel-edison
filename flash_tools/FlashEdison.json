@@ -55,13 +55,22 @@
                 "args": "flash boot_a ${boot_file}"
             },
             {
-                "restrict": ["full", "os"],
+                "restrict": ["full", "os", "update"],
                 "retry": 2,
                 "mandatory": true,
-                "description": "Flashing data",
+                "description": "Flashing system",
+                "timeout": 1200000,
+                "tool": "fastboot",
+                "args": "flash system_a ${system_file}"
+            },
+            {
+                "restrict": ["full", "os", "update"],
+                "retry": 2,
+                "mandatory": true,
+                "description": "Flashing boot",
                 "timeout": 60000,
                 "tool": "fastboot",
-                "args": "flash userdata ${userdata_file}"
+                "args": "flash boot_b ${boot_file}"
             },
             {
                 "restrict": ["full", "os", "update"],
@@ -70,7 +79,16 @@
                 "description": "Flashing system",
                 "timeout": 1200000,
                 "tool": "fastboot",
-                "args": "flash system_a ${system_file}"
+                "args": "flash system_b ${system_file}"
+            },
+            {
+                "restrict": ["full", "os"],
+                "retry": 2,
+                "mandatory": true,
+                "description": "Flashing data",
+                "timeout": 60000,
+                "tool": "fastboot",
+                "args": "flash userdata ${userdata_file}"
             },
             {
                 "restrict": ["full", "os", "update"],

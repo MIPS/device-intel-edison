@@ -22,5 +22,7 @@ fastboot flash gpt      gpt.bin
 fastboot flash u-boot   u-boot-edison.bin
 fastboot flash boot_a   boot.img
 fastboot flash system_a system.img
+fastboot flash boot_b   boot.img
+fastboot flash system_b system.img
 fastboot flash userdata userdata.img
 fastboot oem set_active 0
