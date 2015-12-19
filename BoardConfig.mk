@@ -34,6 +34,11 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_U_BOOT_ENV_SIZE := 0x10000
 BOARD_GPT_INI := device/intel/edison/gpt.ini
 
+# Specific sensors to be built into the sensors HAL
+PLATFORM_SENSOR_LIST += GroveLight
+PLATFORM_SENSOR_LIST += GroveTemperature
+PLATFORM_SENSOR_LIST += MMA7660Accelerometer
+PLATFORM_SENSOR_LIST += MPU9150Accelerometer
 
 PRODUCT_COPY_FILES += \
     device/intel/edison/flash_tools/brillo-flashall-edison.sh:provision-device \
