@@ -39,6 +39,8 @@ PLATFORM_SENSOR_LIST += GroveLight
 PLATFORM_SENSOR_LIST += GroveTemperature
 PLATFORM_SENSOR_LIST += MMA7660Accelerometer
 PLATFORM_SENSOR_LIST += MPU9150Accelerometer
+PLATFORM_SENSOR_LIST += LSM303dAccelerometer
+PLATFORM_SENSOR_LIST += LSM303dOrientation
 
 PRODUCT_COPY_FILES += \
     device/intel/edison/flash_tools/brillo-flashall-edison.sh:provision-device \
