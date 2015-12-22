@@ -24,7 +24,7 @@ $(call add_peripheral, intel, bluetooth/bcm43340)
 # Add lights HAL
 $(call add_peripheral, intel, light/edison_arduino)
 # Add audio support
-$(call add_peripheral, intel, audio/edison)
+$(call add_peripheral, intel, audio/usb)
 # Add sensor support
 $(call add_peripheral, intel, sensors/edison_arduino)
 
