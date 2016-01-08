@@ -26,7 +26,7 @@ $(call add_peripheral, intel, light/edison_arduino)
 # Add audio support
 $(call add_peripheral, intel, audio/usb)
 # Add sensor support
-$(call add_peripheral, intel, sensors/edison_arduino)
+$(call add_peripheral, intel, sensors/mraa)
 
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 268435456
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 134217728
