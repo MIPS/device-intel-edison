@@ -24,7 +24,7 @@ $(call add_peripheral, intel, bluetooth/bcm43340)
 # Add lights HAL
 $(call add_peripheral, intel, light/mraa)
 # Add audio support
-$(call add_peripheral, intel, audio/usb)
+$(call add_peripheral, intel, audio/generic/usb)
 # Add sensor support
 $(call add_peripheral, intel, sensors/mraa)
 
