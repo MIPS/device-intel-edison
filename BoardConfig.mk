@@ -58,10 +58,5 @@ WIFI_DRIVER_FW_PATH_P2P      := "/vendor/firmware/bcm43340/fw_bcmdhd_p2p.bin"
 BOARD_SEPOLICY_DIRS += \
     device/intel/edison/sepolicy
 
-vendor_partition_directory := vendor/bsp/intel/edison
-BRILLO_VENDOR_PARTITIONS := \
-    $(vendor_partition_directory)/uboot_firmware:u-boot-edison.bin \
-    $(vendor_partition_directory)/uboot_firmware:gpt.bin
-
 # Must defined at the end of the file
 $(call add_device_packages)
